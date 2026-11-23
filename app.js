@@ -88,5 +88,28 @@ function bookEvent(index) {
         "Tickets: " + quantity + "\n" +
         "Total: KSh " + total.toLocaleString() +
         "\n\nYour booking is ready for payment integration."
+        const registerForm = document.getElementById("registerForm");
+
+registerForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value;
+    const email = document.getElementById("customerEmail").value;
+
+    const customer = {
+        name: name,
+        email: email
+    };
+
+    localStorage.setItem(
+        "twendezetuCustomer",
+        JSON.stringify(customer)
+    );
+
+    document.getElementById("accountMessage").textContent =
+        "Welcome to TwendeZetu, " + name + "!";
+
+    registerForm.reset();
+});
     );
 }
